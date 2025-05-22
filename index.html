@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictation Practice - Improve Your Listening Skills</title>
+
+    <h2>Vocabulary</h2>
+<p>acquire a language / struggle with / brush up on / be rusty / have an ear for languages/ keep at it / hold a conversation/ pick up phrases/!</p> Listen carefully to each sentence and type your response in the space provided. This activity will help improve your listening and writing skills.</p>
+<p>Remember: Accuracy is key, but don’t worry if you make mistakes—learning is part of the process!</p>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .exercise {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin-top: 10px;
+        }
+        .correct {
+            background-color: lightgreen;
+        }
+        .incorrect {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Write from Dictation Exercise</h2>
+    <p>Listen to the audio and type your answer in the box below.</p>
+
+    <div id="exercise-container">
+        <script>
+            // Correct answers (customize these)
+            const correctAnswers = [
+                "Some people can acquire a language without formal study.",
+                "This is probably because they have a good ear for language..",
+                "Unfortunately, most of use have to keep at it for years and struggle through grammar lessons..",
+                "It might take a while to get accustomed to the Australian accent.",
+                "But you will soon be able to hold a conversation..",
+                "Once you are fluent in English, might want to attain a third language..",
+                "But keep practicing English or you will get rusty.",
+                "Try to grasp new language in class and brush up on old lessons."
+            ];
+
+            for (let i = 0; i < 8; i++) {
+                document.write(`
+                    <div class="exercise">
+                        <label>Sentence ${i + 1}:</label><br>
+                        <audio controls>
+                            <source src="audio${i + 1}.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio><br>
+                        <textarea id="answer${i}" placeholder="Type your answer here..."></textarea><br>
+                        <button onclick="showHint(${i})">Hint</button>
+                    </div>
+                `);
+            }
+
+            function checkAnswers() {
+                for (let i = 0; i < correctAnswers.length; i++) {
+                    let userAnswer = document.getElementById(`answer${i}`).value.trim();
+                    let correctAnswer = correctAnswers[i];
+
+                    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                        document.getElementById(`answer${i}`).classList.add("correct");
+                        document.getElementById(`answer${i}`).classList.remove("incorrect");
+                    } else {
+                        document.getElementById(`answer${i}`).classList.add("incorrect");
+                        document.getElementById(`answer${i}`).classList.remove("correct");
+                    }
+                }
+            }
+
+            function resetAnswers() {
+                for (let i = 0; i < correctAnswers.length; i++) {
+                    let textArea = document.getElementById(`answer${i}`);
+                    textArea.value = "";
+                    textArea.classList.remove("correct", "incorrect");
+                }
+            }
+
+            function showHint(index) {
+                let hint = correctAnswers[index].split(" ").slice(0, 3).join(" ") + " ...";
+                alert(`Hint for Sentence ${index + 1}: ${hint}`);
+            }
+        </script>
+    </div>
+
+    <button onclick="checkAnswers()">Show Correct Answers</button>
+    <button onclick="resetAnswers()">Reset Answers</button>
+
+</body>
+</html>
