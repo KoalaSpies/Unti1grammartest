@@ -98,3 +98,307 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Skills Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        h2 {
+            color: darkblue;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: darkred;
+        }
+        .question {
+            margin-bottom: 15px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+        }
+        select, input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .result {
+            display: none;
+            font-weight: bold;
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: navy;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Language Skills Test</h2>
+
+    <div class="section-title">Part 1: Choose the Best Answer</div>
+
+    <div class="question">
+        <p>1. Despite having had a lot of lessons, I _____________.</p>
+        <select id="q1">
+            <option value="">Select an answer</option>
+            <option value="incorrect">still I cannot pronounce certain sounds in English.</option>
+            <option value="correct">I still cannot pronounce certain sounds in English.</option>
+            <option value="incorrect">I cannot pronounce still certain sounds in English.</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <p>2. Because ___________ , she got a job as an interpreter when she left university.</p>
+        <select id="q2">
+            <option value="">Select an answer</option>
+            <option value="incorrect">fluently Kate speaks Japanese.</option>
+            <option value="incorrect">Kate fluently spoke Japanese.</option>
+            <option value="incorrect">Kate speaks fluently Japanese.</option>
+            <option value="correct">Kate speaks Japanese fluently.</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <p>3. After twelve months of learning Italian, he ____________ making any progress.</p>
+        <select id="q3">
+            <option value="">Select an answer</option>
+            <option value="correct">he obviously wasn’t.</option>
+            <option value="incorrect">he wasn’t obvious.</option>
+            <option value="incorrect">obviously he wasn’t making.</option>
+            <option value="incorrect">he wasn’t making obviously.</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <p>4. By 2035, almost all English language teaching __________ done by non-native speakers.</p>
+        <select id="q4">
+            <option value="">Select an answer</option>
+            <option value="correct">will possibly be done.</option>
+            <option value="incorrect">possibly was doing.</option>
+            <option value="incorrect">possibly will have been done.</option>
+            <option value="incorrect">possibly can will be.</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <p>5. Please be quiet.</p>
+        <select id="q5">
+            <option value="">Select an answer</option>
+            <option value="incorrect">Always you make noise.</option>
+            <option value="incorrect">You always make noise.</option>
+            <option value="correct">You are always making noise.</option>
+            <option value="incorrect">You make noise always.</option>
+        </select>
+    </div>
+
+    <div class="section-title">Part 2: Sentence Order</div>
+
+    <div class="question">
+        <p>6. Put these sentence chunks in order:</p>
+        <p>a) In London</p>
+        <p>b) In the 1500s</p>
+        <p>c) The English language</p>
+        <p>d) Probably had different vowel sounds</p>
+        <input type="text" id="q6" placeholder="Enter order (e.g., c/d/a/b)">
+    </div>
+
+    <div class="question">
+        <p>7. Put this sentence in order:</p>
+        <p>a) Rural England</p>
+        <p>b) In the 1560s</p>
+        <p>c) Was probably born</p>
+        <p>d) Shakespeare</p>
+        <input type="text" id="q7" placeholder="Enter order (e.g., d/c/b/a)">
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            const totalQuestions = 7;
+
+            if (document.getElementById("q1").value === "correct") score++;
+            if (document.getElementById("q2").value === "correct") score++;
+            if (document.getElementById("q3").value === "correct") score++;
+            if (document.getElementById("q4").value === "correct") score++;
+            if (document.getElementById("q5").value === "correct") score++;
+            if (document.getElementById("q6").value.trim() === "c/d/a/b") score++;
+            if (document.getElementById("q7").value.trim() === "d/c/b/a") score++;
+
+            document.getElementById("resultMessage").innerText = `You scored ${score} out of ${totalQuestions}!`;
+            document.getElementById("resultMessage").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+<div class="section-title">Part 3: Choose the Correct Answer</div>
+
+<div class="question">
+    <p>8. Complete this rule:</p>
+    <p>Probably and possibly come ______ the verb “be.”</p>
+    <select id="q8">
+        <option value="">Select an answer</option>
+        <option value="incorrect">before</option>
+        <option value="correct">after</option>
+    </select>
+</div>
+
+<div class="question">
+    <p>9. Complete this rule:</p>
+    <p>Probably and possibly come ______.</p>
+    <select id="q9">
+        <option value="">Select an answer</option>
+        <option value="correct">before</option>
+        <option value="incorrect">after</option>
+    </select>
+</div>
+<script>
+    function checkAnswers() {
+        let score = 0;
+        const totalQuestions = 9;
+
+        if (document.getElementById("q1").value === "correct") score++;
+        if (document.getElementById("q2").value === "correct") score++;
+        if (document.getElementById("q3").value === "correct") score++;
+        if (document.getElementById("q4").value === "correct") score++;
+        if (document.getElementById("q5").value === "correct") score++;
+        if (document.getElementById("q6").value.trim() === "c/d/a/b") score++;
+        if (document.getElementById("q7").value.trim() === "d/c/b/a") score++;
+        if (document.getElementById("q8").value === "correct") score++;
+        if (document.getElementById("q9").value === "correct") score++;
+
+        document.getElementById("resultMessage").innerText = `You scored ${score} out of ${totalQuestions}!`;
+        document.getElementById("resultMessage").style.display = "block";
+    }
+</script>
+<div class="section-title">Part 4: Matching Sentences</div>
+
+<div class="question">
+    <p>10. Match the sentences to their correct meanings:</p>
+    <table>
+        <tr>
+            <td><strong>Sentences</strong></td>
+            <td><strong>Meanings</strong></td>
+        </tr>
+        <tr>
+            <td>a) It was so funny.</td>
+            <td>
+                <select id="q10a">
+                    <option value="">Select an answer</option>
+                    <option value="correct">He literally died.</option>
+                    <option value="incorrect">Literally, he died.</option>
+                    <option value="incorrect">Fortunately, he realised what had happened.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>b) It was tragic.</td>
+            <td>
+                <select id="q10b">
+                    <option value="">Select an answer</option>
+                    <option value="incorrect">He literally died.</option>
+                    <option value="correct">Literally, he died.</option>
+                    <option value="incorrect">He obviously doesn’t know.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>c) He looks confused.</td>
+            <td>
+                <select id="q10c">
+                    <option value="">Select an answer</option>
+                    <option value="incorrect">Fortunately, he realised what had happened.</option>
+                    <option value="incorrect">Obviously, the traffic is bad.</option>
+                    <option value="correct">He obviously doesn’t know.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>d) He is really late.</td>
+            <td>
+                <select id="q10d">
+                    <option value="">Select an answer</option>
+                    <option value="incorrect">He obviously doesn’t know.</option>
+                    <option value="correct">Obviously, the traffic is bad.</option>
+                    <option value="incorrect">He literally died.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>e) He was about to make a big mistake.</td>
+            <td>
+                <select id="q10e">
+                    <option value="">Select an answer</option>
+                    <option value="correct">Fortunately, he realised what had happened.</option>
+                    <option value="incorrect">He obviously doesn’t know.</option>
+                    <option value="incorrect">Obviously, the traffic is bad.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>f) You didn’t do it.</td>
+            <td>
+                <select id="q10f">
+                    <option value="">Select an answer</option>
+                    <option value="correct">I definitely did!</option>
+                    <option value="incorrect">He literally died.</option>
+                    <option value="incorrect">Literally, he died.</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<button onclick="checkAnswers()">Submit Test</button>
+<p class="result" id="resultMessage"></p>
+
+<script>
+    function checkAnswers() {
+        let score = 0;
+        const totalQuestions = 15;
+
+        if (document.getElementById("q1").value === "correct") score++;
+        if (document.getElementById("q2").value === "correct") score++;
+        if (document.getElementById("q3").value === "correct") score++;
+        if (document.getElementById("q4").value === "correct") score++;
+        if (document.getElementById("q5").value === "correct") score++;
+        if (document.getElementById("q6").value.trim() === "c/d/a/b") score++;
+        if (document.getElementById("q7").value.trim() === "d/c/b/a") score++;
+        if (document.getElementById("q8").value === "correct") score++;
+        if (document.getElementById("q9").value === "correct") score++;
+        if (document.getElementById("q10a").value === "correct") score++;
+        if (document.getElementById("q10b").value === "correct") score++;
+        if (document.getElementById("q10c").value === "correct") score++;
+        if (document.getElementById("q10d").value === "correct") score++;
+        if (document.getElementById("q10e").value === "correct") score++;
+        if (document.getElementById("q10f").value === "correct") score++;
+
+        document.getElementById("resultMessage").innerText = `You scored ${score} out of ${totalQuestions}!`;
+        document.getElementById("resultMessage").style.display = "block";
+    }
+</script>
