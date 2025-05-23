@@ -62,14 +62,14 @@
     ];
 
     const audioFiles = [
-      "SubBlock_Some-people-can-acquire-a-lang.mp3",
-      "SubBlock_This-is-probably-because-they.mp3",
-      "SubBlock_Unfortunately-most-of-us-have.mp3",
-      "SubBlock_It-might-take-a-while-to-get-a.mp3",
-      "SubBlock_You-will-soon-be-able-to-hold.mp3",
-      "SubBlock_Once-you-are-fluent-in-English.mp3",
-      "SubBlock_But-keep-practicing-English-or.mp3",
-      "SubBlock_Try-to-grasp-new-language-in-c.mp3"
+      "audio/SubBlock_Some-people-can-acquire-a-lang.mp3",
+      "audio/SubBlock_This-is-probably-because-they.mp3",
+      "audio/SubBlock_Unfortunately-most-of-us-have.mp3",
+      "audio/SubBlock_It-might-take-a-while-to-get-a.mp3",
+      "audio/SubBlock_You-will-soon-be-able-to-hold.mp3",
+      "audio/SubBlock_Once-you-are-fluent-in-English.mp3",
+      "audio/SubBlock_But-keep-practicing-English-or.mp3",
+      "audio/SubBlock_Try-to-grasp-new-language-in-c.mp3"
     ];
 
     const container = document.getElementById("exercise-container");
@@ -89,7 +89,7 @@
     }
 
     function normalize(text) {
-      return text.toLowerCase().replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").trim();
+      return text.toLowerCase().replace(/[^À-ſa-z0-9\s]/gi, '').replace(/\s+/g, ' ').trim();
     }
 
     function wordDiffCount(a, b) {
@@ -163,214 +163,4 @@
   </script>
 </body>
 </html>
-
-
-    <h2>Language Skills Test</h2>
-
-    <div class="section-title">Part 1: Choose the Best Answer</div>
-
-    <div class="question">
-        <p>1. Despite having had a lot of lessons, I _____________.</p>
-        <select id="q1">
-            <option value="">Select an answer</option>
-            <option value="incorrect">still I cannot pronounce certain sounds in English.</option>
-            <option value="correct">I still cannot pronounce certain sounds in English.</option>
-            <option value="incorrect">I cannot pronounce still certain sounds in English.</option>
-        </select>
-    </div>
-
-    <div class="question">
-        <p>2. Because ___________ , she got a job as an interpreter when she left university.</p>
-        <select id="q2">
-            <option value="">Select an answer</option>
-            <option value="incorrect">fluently Kate speaks Japanese.</option>
-            <option value="incorrect">Kate fluently spoke Japanese.</option>
-            <option value="incorrect">Kate speaks fluently Japanese.</option>
-            <option value="correct">Kate speaks Japanese fluently.</option>
-        </select>
-    </div>
-
-    <div class="question">
-        <p>3. Please be quiet.</p>
-        <select id="q5">
-            <option value="">Select an answer</option>
-            <option value="incorrect">Always you make noise.</option>
-            <option value="incorrect">You always make noise.</option>
-            <option value="correct">You are always making noise.</option>
-            <option value="incorrect">You make noise always.</option>
-        </select>
-    </div>
-
-    <div class="section-title">Part 2: Sentence Order</div>
-
-    <div class="question">
-        <p>4. Put these sentence chunks in order:</p>
-        <p>a) In London</p>
-        <p>b) In the 1500s</p>
-        <p>c) The English language</p>
-        <p>d) Probably had different vowel sounds</p>
-        <input type="text" id="q6" placeholder="Enter order (e.g., c/d/a/b)">
-    </div>
-
-    <div class="question">
-        <p>5. Put this sentence in order:</p>
-        <p>a) Rural England</p>
-        <p>b) In the 1560s</p>
-        <p>c) Was probably born</p>
-        <p>d) Shakespeare</p>
-        <input type="text" id="q7" placeholder="Enter order (e.g., d/c/a/b)">
-    </div>
-
-    <script>
-        function checkAnswers() {
-            let score = 0;
-            const totalQuestions = 7;
-
-            if (document.getElementById("q1").value === "correct") score++;
-            if (document.getElementById("q2").value === "correct") score++;
-            if (document.getElementById("q3").value === "correct") score++;
-            if (document.getElementById("q4").value === "correct") score++;
-            if (document.getElementById("q5").value === "correct") score++;
-            if (document.getElementById("q6").value.trim() === "c/d/a/b") score++;
-            if (document.getElementById("q7").value.trim() === "d/c/b/a") score++;
-
-            document.getElementById("resultMessage").innerText = `You scored ${score} out of ${totalQuestions}!`;
-            document.getElementById("resultMessage").style.display = "block";
-        }
-    </script>
-
-</body>
-</html>
-<script>
-    function checkAnswers() {
-        let score = 0;
-        const totalQuestions = 9;
-
-        if (document.getElementById("q1").value === "correct") score++;
-        if (document.getElementById("q2").value === "correct") score++;
-        if (document.getElementById("q3").value === "correct") score++;
-        if (document.getElementById("q4").value === "correct") score++;
-        if (document.getElementById("q5").value === "correct") score++;
-        if (document.getElementById("q6").value.trim() === "c/d/a/b") score++;
-        if (document.getElementById("q7").value.trim() === "d/c/b/a") score++;
-        if (document.getElementById("q8").value === "correct") score++;
-        if (document.getElementById("q9").value === "correct") score++;
-
-        document.getElementById("resultMessage").innerText = `You scored ${score} out of ${totalQuestions}!`;
-        document.getElementById("resultMessage").style.display = "block";
-    }
-</script>
-<div class="section-title">Part 4: Matching Sentences</div>
-
-<div class="question">
-    <p>6. Match the sentences to their correct meanings:</p>
-    <table>
-        <tr>
-            <td><strong>Sentences</strong></td>
-            <td><strong>Meanings</strong></td>
-        </tr>
-        <tr>
-            <td>a) It was so funny.</td>
-            <td>
-                <select id="q10a">
-                    <option value="">Select an answer</option>
-                    <option value="correct">He literally died.</option>
-                    <option value="incorrect">Literally, he died.</option>
-                    <option value="incorrect">Fortunately, he realised what had happened.</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>b) It was tragic.</td>
-            <td>
-                <select id="q10b">
-                    <option value="">Select an answer</option>
-                    <option value="incorrect">He literally died.</option>
-                    <option value="correct">Literally, he died.</option>
-                    <option value="incorrect">He obviously doesn’t know.</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>c) He looks confused.</td>
-            <td>
-                <select id="q10c">
-                    <option value="">Select an answer</option>
-                    <option value="incorrect">Fortunately, he realised what had happened.</option>
-                    <option value="incorrect">Obviously, the traffic is bad.</option>
-                    <option value="correct">He obviously doesn’t know.</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>d) He is really late.</td>
-            <td>
-                <select id="q10d">
-                    <option value="">Select an answer</option>
-                    <option value="incorrect">He obviously doesn’t know.</option>
-                    <option value="correct">Obviously, the traffic is bad.</option>
-                    <option value="incorrect">He literally died.</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>e) He was about to make a big mistake.</td>
-            <td>
-                <select id="q10e">
-                    <option value="">Select an answer</option>
-                    <option value="correct">Fortunately, he realised what had happened.</option>
-                    <option value="incorrect">He obviously doesn’t know.</option>
-                    <option value="incorrect">Obviously, the traffic is bad.</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>f) You didn’t do it.</td>
-            <td>
-                <select id="q10f">
-                    <option value="">Select an answer</option>
-                    <option value="correct">I definitely did!</option>
-                    <option value="incorrect">He literally died.</option>
-                    <option value="incorrect">Literally, he died.</option>
-                </select>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<button onclick="checkAnswers()">Submit Test</button>
-<p class="result" id="resultMessage"></p>
-
-<script>
-    function checkAnswers() {
-        let score = 0;
-        const totalQuestions = 15;
-
-        if (document.getElementById("q1").value === "correct") score++;
-        if (document.getElementById("q2").value === "correct") score++;
-        if (document.getElementById("q3").value === "correct") score++;
-        if (document.getElementById("q4").value === "correct") score++;
-        if (document.getElementById("q5").value === "correct") score++;
-        if (document.getElementById("q6").value.trim() === "c/d/a/b") score++;
-        if (document.getElementById("q7").value.trim() === "d/c/b/a") score++;
-        if (document.getElementById("q8").value === "correct") score++;
-        if (document.getElementById("q9").value === "correct") score++;
-        if (document.getElementById("q10a").value === "correct") score++;
-        if (document.getElementById("q10b").value === "correct") score++;
-        if (document.getElementById("q10c").value === "correct") score++;
-        if (document.getElementById("q10d").value === "correct") score++;
-        if (document.getElementById("q10e").value === "correct") score++;
-        if (document.getElementById("q10f").value === "correct") score++;
-
-        document.getElementById("resultMessage").innerText = `You scored ${score} out of ${totalQuestions}!`;
-        document.getElementById("resultMessage").style.display = "block";
-    }
-</script>
-
-cd your-repo-folder
-mkdir audio
-cp /path/to/*.mp3 audio/
-git add audio/
-git commit -m "Add audio files"
-git push
 
