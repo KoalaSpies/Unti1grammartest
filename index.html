@@ -1,162 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictation Practice - Improve Your Listening Skills</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dictation Practice - Improve Your Listening Skills</title>
 
-    <h2>Vocabulary</h2>
-<p>acquire a language / struggle with / brush up on / be rusty / have an ear for languages/ keep at it / hold a conversation/ pick up phrases/!</p> Listen carefully to each sentence and type your response in the space provided. This activity will help improve your listening and writing skills.</p>
-<p>Remember: Accuracy is key, but don’t worry if you make mistakes—learning is part of the process!</p>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .exercise {
-            margin-bottom: 20px;
-        }
-        textarea {
-            width: 100%;
-            height: 50px;
-            margin-top: 10px;
-        }
-        .correct {
-            background-color: lightgreen;
-        }
-        .incorrect {
-            background-color: lightcoral;
-        }
-    </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .exercise {
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 50px;
+      margin-top: 10px;
+    }
+    .correct {
+      background-color: lightgreen;
+    }
+    .incorrect {
+      background-color: lightcoral;
+    }
+    .score {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <h2>Write from Dictation Exercise</h2>
-    <p>Listen to the audio and type your answer in the box below.</p>
+  <h2>Vocabulary</h2>
+  <p>acquire a language / struggle with / brush up on / be rusty / have an ear for languages / keep at it / hold a conversation / pick up phrases</p>
+  <p>Listen carefully to each sentence and type your response in the space provided. This activity will help improve your listening and writing skills.</p>
+  <p>Remember: Accuracy is key, but don’t worry if you make mistakes—learning is part of the process!</p>
 
-    <div id="exercise-container">
-        <script>
-            // Correct answers (customize these)
-            const correctAnswers = [
-                "Some people can acquire a language without formal study.",
-                "This is probably because they have a good ear for language..",
-                "Unfortunately, most of use have to keep at it for years and struggle through grammar lessons..",
-                "It might take a while to get accustomed to the Australian accent.",
-                "But you will soon be able to hold a conversation..",
-                "Once you are fluent in English, might want to attain a third language..",
-                "But keep practicing English or you will get rusty.",
-                "Try to grasp new language in class and brush up on old lessons."
-            ];
+  <h2>Write from Dictation Exercise</h2>
+  <p>Listen to the audio and type your answer in the box below.</p>
 
-            for (let i = 0; i < 8; i++) {
-                document.write(`
-                    <div class="exercise">
-                        <label>Sentence ${i + 1}:</label><br>
-                        <audio controls>
-                            <source src="audio${i + 1}.mp3" type="audio/mp3">
-                            Your browser does not support the audio element.
-                        </audio><br>
-                        <textarea id="answer${i}" placeholder="Type your answer here..."></textarea><br>
-                        <button onclick="showHint(${i})">Hint</button>
-                    </div>
-                `);
-            }
+  <div id="exercise-container"></div>
 
-            function checkAnswers() {
-                for (let i = 0; i < correctAnswers.length; i++) {
-                    let userAnswer = document.getElementById(`answer${i}`).value.trim();
-                    let correctAnswer = correctAnswers[i];
+  <button onclick="checkAnswers()">Check Answers</button>
+  <button onclick="resetAnswers()">Reset Answers</button>
+  <button onclick="submitAndScore()">Submit and Score</button>
 
-                    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-                        document.getElementById(`answer${i}`).classList.add("correct");
-                        document.getElementById(`answer${i}`).classList.remove("incorrect");
-                    } else {
-                        document.getElementById(`answer${i}`).classList.add("incorrect");
-                        document.getElementById(`answer${i}`).classList.remove("correct");
-                    }
-                }
-            }
+  <div id="scoreDisplay" class="score"></div>
 
-            function resetAnswers() {
-                for (let i = 0; i < correctAnswers.length; i++) {
-                    let textArea = document.getElementById(`answer${i}`);
-                    textArea.value = "";
-                    textArea.classList.remove("correct", "incorrect");
-                }
-            }
+  <script>
+    const correctAnswers = [
+      "Some people can acquire a language without formal study.",
+      "This is probably because they have a good ear for language.",
+      "Unfortunately, most of us have to keep at it for years and struggle through grammar lessons.",
+      "It might take a while to get accustomed to the Australian accent.",
+      "But you will soon be able to hold a conversation.",
+      "Once you are fluent in English, you might want to attain a third language.",
+      "But keep practicing English or you will get rusty.",
+      "Try to grasp new language in class and brush up on old lessons."
+    ];
 
-            function showHint(index) {
-                let hint = correctAnswers[index].split(" ").slice(0, 3).join(" ") + " ...";
-                alert(`Hint for Sentence ${index + 1}: ${hint}`);
-            }
-        </script>
-    </div>
+    const audioFiles = [
+      "SubBlock_Some-people-can-acquire-a-lang.mp3",
+      "SubBlock_This-is-probably-because-they.mp3",
+      "SubBlock_Unfortunately-most-of-us-have.mp3",
+      "SubBlock_It-might-take-a-while-to-get-a.mp3",
+      "SubBlock_You-will-soon-be-able-to-hold.mp3",
+      "SubBlock_Once-you-are-fluent-in-English.mp3",
+      "SubBlock_But-keep-practicing-English-or.mp3",
+      "SubBlock_Try-to-grasp-new-language-in-c.mp3"
+    ];
 
-    <button onclick="checkAnswers()">Show Correct Answers</button>
-    <button onclick="resetAnswers()">Reset Answers</button>
+    const container = document.getElementById("exercise-container");
 
+    for (let i = 0; i < correctAnswers.length; i++) {
+      container.innerHTML += `
+        <div class="exercise">
+          <label>Sentence ${i + 1}:</label><br>
+          <audio controls>
+            <source src="${audioFiles[i]}" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio><br>
+          <textarea id="answer${i}" placeholder="Type your answer here..."></textarea><br>
+          <button onclick="showHint(${i})">Hint</button>
+        </div>
+      `;
+    }
+
+    function normalize(text) {
+      return text.toLowerCase().replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").trim();
+    }
+
+    function wordDiffCount(a, b) {
+      const aWords = normalize(a).split(" ");
+      const bWords = normalize(b).split(" ");
+      let diff = 0;
+      const maxLen = Math.max(aWords.length, bWords.length);
+
+      for (let i = 0; i < maxLen; i++) {
+        if (aWords[i] !== bWords[i]) diff++;
+      }
+
+      return diff;
+    }
+
+    function checkAnswers() {
+      for (let i = 0; i < correctAnswers.length; i++) {
+        const userAnswer = document.getElementById(`answer${i}`).value;
+        const correctAnswer = correctAnswers[i];
+
+        if (normalize(userAnswer) === normalize(correctAnswer)) {
+          document.getElementById(`answer${i}`).classList.add("correct");
+          document.getElementById(`answer${i}`).classList.remove("incorrect");
+        } else {
+          document.getElementById(`answer${i}`).classList.add("incorrect");
+          document.getElementById(`answer${i}`).classList.remove("correct");
+        }
+      }
+    }
+
+    function resetAnswers() {
+      for (let i = 0; i < correctAnswers.length; i++) {
+        const textArea = document.getElementById(`answer${i}`);
+        textArea.value = "";
+        textArea.classList.remove("correct", "incorrect");
+      }
+      document.getElementById("scoreDisplay").innerText = "";
+    }
+
+    function submitAndScore() {
+      let score = 0;
+      for (let i = 0; i < correctAnswers.length; i++) {
+        const userAnswer = document.getElementById(`answer${i}`).value;
+        const correctAnswer = correctAnswers[i];
+        const diff = wordDiffCount(userAnswer, correctAnswer);
+
+        if (normalize(userAnswer) === normalize(correctAnswer)) {
+          score += 2;
+        } else if (diff <= 2) {
+          score += 1;
+        }
+
+        // Highlight answers too
+        if (normalize(userAnswer) === normalize(correctAnswer)) {
+          document.getElementById(`answer${i}`).classList.add("correct");
+          document.getElementById(`answer${i}`).classList.remove("incorrect");
+        } else {
+          document.getElementById(`answer${i}`).classList.add("incorrect");
+          document.getElementById(`answer${i}`).classList.remove("correct");
+        }
+      }
+
+      const total = correctAnswers.length * 2;
+      document.getElementById("scoreDisplay").innerText = `Your Score: ${score} / ${total}`;
+    }
+
+    function showHint(index) {
+      const hint = correctAnswers[index].split(" ").slice(0, 3).join(" ") + " ...";
+      alert(`Hint for Sentence ${index + 1}: ${hint}`);
+    }
+  </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Skills Test</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        h2 {
-            color: darkblue;
-            text-align: center;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 20px;
-            color: darkred;
-        }
-        .question {
-            margin-bottom: 15px;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
-        }
-        select, input {
-            width: 100%;
-            padding: 5px;
-            margin-top: 5px;
-        }
-        .result {
-            display: none;
-            font-weight: bold;
-            color: green;
-            text-align: center;
-            margin-top: 20px;
-        }
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: darkblue;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: navy;
-        }
-    </style>
-</head>
-<body>
+
 
     <h2>Language Skills Test</h2>
 
